@@ -62,11 +62,9 @@ router.post("/login", async (req, res) => {
       return sendResponse(res, 400, false, "invalid Credentials");
     }
     // token
-    const token = JWT.sign(
-      { _id: user._id },
-      "myseretkeyinexpressapplication",
-      { expiresIn: "7d" }
-    );
+    const token = JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
     sendResponse(res, 200, true, "login successfully", token);
   } catch (error) {
     console.log(error);
