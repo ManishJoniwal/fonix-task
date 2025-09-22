@@ -25,7 +25,7 @@ const authRoute = require("./routes/authRoute");
 const userRoute = require("./routes/userRoute");
 
 async function main() {
-  await mongoose.connect("mongodb://localhost:27017/fonixtraing");
+  await mongoose.connect(process.env.mongoURI);
 }
 main()
   .then(() => {
